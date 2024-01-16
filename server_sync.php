@@ -52,17 +52,15 @@ function get_apps($last_app, $max_app){	# Get the app data and convert it to jso
     $sql = "select devicename, username,duration, datetimeadded, app,title from aw_application WHERE id >= '$last_app' AND id <= '$max_app'";
     $result = mysqli_query(conn(), $sql);
     $app = $result->fetch_all(MYSQLI_ASSOC);
-
-	$json = json_encode($app);
+    $json = json_encode($app);
     return $json;
 }
 
 function get_school(){
-	$school = 'SELECT school, category, ownership, region, country FROM `config` WHERE 1';
+    $school = 'SELECT school, category, ownership, region, country FROM `config` WHERE 1';
     $result = mysqli_query(conn(), $school);
     $school = $result->fetch_all(MYSQLI_ASSOC)[0];
-
-	$json = json_encode($school);
+    $json = json_encode($school);
     return $json;
 }
 
@@ -102,9 +100,9 @@ function init(){
             'apps'   => $app_data
         );
     	// $jsondata = json_encode($data);
-        foreach ($data as $key ) {
-            echo "<pre>" . $key . "</pre>";
-        }
+        // foreach ($data as $key ) {
+        //    echo "<pre>" . $key . "</pre>";
+        //}
         
     	$response = upload($data);
     	if($response == 'success' or $response == 'successsuccess'){
